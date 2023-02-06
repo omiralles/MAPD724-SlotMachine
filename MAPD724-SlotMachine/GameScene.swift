@@ -37,6 +37,7 @@ class GameScene: SKScene {
     var exitbtn: ExitButton?
     var plusbtn: PlusButton?
     var minusbtn: MinusButton?
+    var spindisablebtn: SpinDisableButton?
     
     //Variable for matrix animation
     var matrixAnimation = SKSpriteNode()
@@ -57,7 +58,28 @@ class GameScene: SKScene {
     var creditLabel: SKLabelNode!
     var betLabel: SKLabelNode!
     var winLabel: SKLabelNode!
+    var jackPotLabel: SKLabelNode!
     
+    //Bet, credit and result
+    var initCredit: Int = 1000
+    var currentCredit: Int = 0
+    var playerBet: Int = 0
+    //public var playResult: Bool = false
+    var prize: Int = 0
+    var currentWinnings: Int = 0
+    var currentJackPot: Int = 5000
+    
+    //Simbols number
+    var grapes = 0;
+    var bananas = 0;
+    var oranges = 0;
+    var cherries = 0;
+    var bars = 0;
+    var bells = 0;
+    var sevens = 0;
+    var blanks = 0;
+    
+    //Create components and inicialize them
     override func sceneDidLoad() {
         screenWidth = frame.width
         screenHeight = frame.height
@@ -70,6 +92,10 @@ class GameScene: SKScene {
         spinbtn = SpinButton()
         spinbtn?.name = "spin"
         addChild(spinbtn!)
+        
+        spindisablebtn = SpinDisableButton()
+        spindisablebtn?.name = "spindisable"
+        addChild(spindisablebtn!)
         
         resetbtn = ResetButton()
         resetbtn?.name = "reset"
@@ -120,7 +146,8 @@ class GameScene: SKScene {
         
         creditLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
         creditLabel.name = "creditlbl"
-        creditLabel.text = "0000000"
+        currentCredit = initCredit
+        //creditLabel.text = "$ \(currentCredit)"
         creditLabel.fontColor = UIColor.green
         creditLabel.fontSize = 16
         creditLabel.position = CGPoint(x: 105, y: 285)
@@ -129,30 +156,30 @@ class GameScene: SKScene {
         
         betLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
         betLabel.name = "betlbl"
-        betLabel.text = "0000000"
+        //betLabel.text = "$ \(playerBet)"
         betLabel.fontColor = UIColor.green
         betLabel.fontSize = 16
-        betLabel.position = CGPoint(x: -30, y: -208)
+        betLabel.position = CGPoint(x: -45, y: -208)
         betLabel.zPosition = 4
         addChild(betLabel)
         
         winLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
         winLabel.name = "winlbl"
-        winLabel.text = "0000000"
+        //winLabel.text = "$ \(prize)"
         winLabel.fontColor = UIColor.green
         winLabel.fontSize = 16
-        winLabel.position = CGPoint(x: -49, y: 285)
+        winLabel.position = CGPoint(x: -40, y: 285)
         winLabel.zPosition = 4
         addChild(winLabel)
         
-        winLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
-        winLabel.name = "jackpotlbl"
-        winLabel.text = "0000000"
-        winLabel.fontColor = UIColor.green
-        winLabel.fontSize = 16
-        winLabel.position = CGPoint(x: 95, y: 320)
-        winLabel.zPosition = 4
-        addChild(winLabel)
+        jackPotLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
+        jackPotLabel.name = "jackpotlbl"
+        //jackPotLabel.text = "$ \(currentJackPot)"
+        jackPotLabel.fontColor = UIColor.green
+        jackPotLabel.fontSize = 16
+        jackPotLabel.position = CGPoint(x: 95, y: 320)
+        jackPotLabel.zPosition = 4
+        addChild(jackPotLabel)
         
         lbltitle = LabelTitle()
         lbltitle?.position = CGPoint(x: -75, y: 330)
@@ -165,6 +192,10 @@ class GameScene: SKScene {
         //Create animations
         buildMatrix()
         buildSymbols()
+        
+        currentWinnings = 0
+        
+        updateLabels()
     }
     
     override func didMove(to view: SKView) {
@@ -211,17 +242,18 @@ class GameScene: SKScene {
         let symbolAnimatedAtlas = SKTextureAtlas(named: "Symbols")
         var symbolFrames: [SKTexture] = []
         
+        symbolFrames.append(symbolAnimatedAtlas.textureNamed("blank"))
+        symbolFrames.append(symbolAnimatedAtlas.textureNamed("grapes"))
         symbolFrames.append(symbolAnimatedAtlas.textureNamed("banana"))
+        symbolFrames.append(symbolAnimatedAtlas.textureNamed("orange"))
+        symbolFrames.append(symbolAnimatedAtlas.textureNamed("cherry"))
         symbolFrames.append(symbolAnimatedAtlas.textureNamed("bar"))
         symbolFrames.append(symbolAnimatedAtlas.textureNamed("bell"))
-        symbolFrames.append(symbolAnimatedAtlas.textureNamed("cherry"))
-        symbolFrames.append(symbolAnimatedAtlas.textureNamed("grapes"))
-        symbolFrames.append(symbolAnimatedAtlas.textureNamed("orange"))
         symbolFrames.append(symbolAnimatedAtlas.textureNamed("seven"))
         symbolAnimationFrames = symbolFrames
         
         //Load a random image
-        var rnd: Int = Int(UInt8.random(in: 0...6))
+        var rnd: Int = runTheRheels()
         var firstFrameTexture = symbolAnimationFrames[rnd]
         
         symbolAnimation1 = SKSpriteNode(texture: firstFrameTexture)
@@ -232,7 +264,7 @@ class GameScene: SKScene {
         addChild(symbolAnimation1)
         
         //Load a random image
-        rnd = Int(UInt8.random(in: 0...6))
+        rnd = runTheRheels()
         firstFrameTexture = symbolAnimationFrames[rnd]
         
         symbolAnimation2 = SKSpriteNode(texture: firstFrameTexture)
@@ -243,7 +275,7 @@ class GameScene: SKScene {
         addChild(symbolAnimation2)
         
         //Load a random image
-        rnd = Int(UInt8.random(in: 0...6))
+        rnd = runTheRheels()
         firstFrameTexture = symbolAnimationFrames[rnd]
         
         symbolAnimation3 = SKSpriteNode(texture: firstFrameTexture)
@@ -254,6 +286,7 @@ class GameScene: SKScene {
         addChild(symbolAnimation3)
         
         //animateSymbols()
+        determineResult()
     }
 
     func animateSymbols() {
@@ -292,13 +325,81 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //Touch detection for the actions
         for t in touches {
             //self.touchDown(atPoint: t.location(in: self))
             let location = t.location(in: self)
             let touchNode = atPoint(location)
             
-            //Spin and exit click action
-            if (touchNode.name == "spin") {
+            //Spin action when symblos animations are finished
+            if ((touchNode.name == "spin") && completeScale()) {
+                //Alert in case bet is 0
+                if (playerBet == 0) {
+                    let alert = UIAlertController(title: "Can't place $0 bet", message: "Please choose amount to bet.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+                //Alert if credit is exceeded in the bed
+                else if ((playerBet > currentCredit) && (currentCredit > 0)) {
+                    let alert = UIAlertController(title: "Credit Exceeded", message: "You don't have enough credit. Decrease your bet", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+                //Alert if you don't have credit
+                else if (currentCredit == 0) {
+                    let alert = UIAlertController(title: "No credit", message: "You don't have credit. Push reset to start again", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                    self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+                //Spin new symbols
+                else {
+                    //Remove symbols
+                    symbolAnimation1.removeAllChildren()
+                    symbolAnimation2.removeAllChildren()
+                    symbolAnimation3.removeAllChildren()
+                    
+                    symbolAnimation1.removeFromParent()
+                    symbolAnimation2.removeFromParent()
+                    symbolAnimation3.removeFromParent()
+                    
+                    //Inicialize scales
+                    scaleVal1 = 0.0
+                    scaleVal2 = 0.0
+                    scaleVal3 = 0.0
+                    
+                    resetFruitTally()
+                    buildSymbols()
+                }
+            }
+            if ((touchNode.name == "spindisable") && completeScale()) {
+                let alert = UIAlertController(title: "Credit Exceeded", message: "You don't have enough credit. Decrease your bet", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+            //Action exit button
+            if (touchNode.name == "exit") {
+                exit(0)
+            }
+            //Increment bet
+            if (touchNode.name == "plus"){
+                if ((playerBet + 10) <= currentCredit) {
+                    playerBet += 10
+                }
+            }
+            //Decrement bet
+            if (touchNode.name == "minus"){
+                if ((playerBet - 10) >= 0) {
+                    playerBet -= 10
+                }
+            }
+            //Reset all the values and components
+            if (touchNode.name == "reset") {
+                currentCredit = initCredit
+                playerBet = 0
+                currentWinnings = 0
+                currentJackPot = 5000
+                
+                //Remove symbols
                 symbolAnimation1.removeAllChildren()
                 symbolAnimation2.removeAllChildren()
                 symbolAnimation3.removeAllChildren()
@@ -307,13 +408,17 @@ class GameScene: SKScene {
                 symbolAnimation2.removeFromParent()
                 symbolAnimation3.removeFromParent()
                 
+                //Inicialize scales
                 scaleVal1 = 0.0
                 scaleVal2 = 0.0
                 scaleVal3 = 0.0
                 
+                resetFruitTally()
                 buildSymbols()
+                currentWinnings = 0
             }
-            if (touchNode.name == "exit") { exit(0) }
+            //Update all the application labels
+            updateLabels()
         }
     }
     
@@ -333,16 +438,169 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         //Change the scale to create animation with symbols
         if (scaleVal1 <= 0.8){
-            scaleVal1 += 0.005
+            scaleVal1 += 0.01
             symbolAnimation1.setScale(scaleVal1)
         }
         else if (scaleVal2 <= 0.8){
-            scaleVal2 += 0.005
+            scaleVal2 += 0.01
             symbolAnimation2.setScale(scaleVal2)
         }
         else if (scaleVal3 <= 0.8){
-            scaleVal3 += 0.005
+            scaleVal3 += 0.01
             symbolAnimation3.setScale(scaleVal3)
         }
+        //Show disable button image if not enough credit
+        if (playerBet > currentCredit) {
+            spindisablebtn?.zPosition = 4
+        }
+        else {
+            spindisablebtn?.zPosition = 0
+        }
+    }
+    
+    //Logic to show symbols
+    func runTheRheels() -> Int {
+        var resultNumber: [Int] = []
+        
+        let actualRandomNumber = Int.random(in: 1...65)
+        resultNumber.append(actualRandomNumber)
+        switch actualRandomNumber {
+        case 1...27:
+            blanks += 1
+            return 0
+        case 28...37:
+            grapes += 1
+            return 1
+        case 38...46:
+            bananas += 1
+            return 2
+        case 47...54:
+            oranges += 1
+            return 3
+        case 55...59:
+            cherries += 1
+            return 4
+        case 60...62:
+            bars += 1
+            return 5
+        case 63...64:
+            bells += 1
+            return 6
+        case 65:
+            sevens += 1
+            return 7
+        default:
+            return -1
+        }
+    }
+    
+    //Determinate if it's a winner combination
+    private func determineResult(){
+        if (blanks == 0)
+        {
+            if (grapes == 3) {
+                prize = playerBet * 10;
+            }
+            else if(bananas == 3) {
+                prize = playerBet * 20;
+            }
+            else if (oranges == 3) {
+                prize = playerBet * 30;
+            }
+            else if (cherries == 3) {
+                prize = playerBet * 40;
+            }
+            else if (bars == 3) {
+                prize = playerBet * 50;
+            }
+            else if (bells == 3) {
+                prize = playerBet * 75;
+            }
+            else if (sevens == 3) {
+                prize = playerBet * 100;
+            }
+            else if (grapes == 2) {
+                prize = playerBet * 2;
+            }
+            else if (bananas == 2) {
+                prize = playerBet * 2;
+            }
+            else if (oranges == 2) {
+                prize = playerBet * 3;
+            }
+            else if (cherries == 2) {
+                prize = playerBet * 4;
+            }
+            else if (bars == 2) {
+                prize = playerBet * 5;
+            }
+            else if (bells == 2) {
+                prize = playerBet * 10;
+            }
+            else if (sevens == 2) {
+                prize = playerBet * 20;
+            }
+            else if (sevens == 1) {
+                prize = playerBet * 5;
+            }
+            else {
+                prize = playerBet * 1;
+            }
+            //Check if you have won the jackpot
+            checkJackPot()
+            //Numer of winning spins
+            currentWinnings += 1
+            currentCredit += prize
+        } else {
+            prize = 0
+            currentCredit -= playerBet
+        }
+        //Update labels
+        updateLabels()
+    }
+    
+    //Reset symbols results
+    func resetFruitTally() {
+        grapes = 0;
+        bananas = 0;
+        oranges = 0;
+        cherries = 0;
+        bars = 0;
+        bells = 0;
+        sevens = 0;
+        blanks = 0;
+    }
+    
+    //Check if symbols are fully displayed
+    func completeScale() -> Bool {
+        if (scaleVal1 > 0.8 && scaleVal2 > 0.8 && scaleVal3 > 0.8) {
+            return true
+        }
+        return false
+    }
+    
+    //Check if user have won jackpot whith two random numbers
+    func checkJackPot() {
+        let jackPotTry = Int.random(in: 1...51) + 1
+        let jackPotWin = Int.random(in: 1...51) + 1
+        //let jackPotTry = 1
+        //let jackPotWin = 1
+        
+        if (jackPotTry == jackPotWin) {
+            let alert = UIAlertController(title: "Congratulations! You WIN!!", message: "You have win de JackPot", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+            self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            currentCredit += currentJackPot
+            currentJackPot = 1000
+        }
+    }
+    
+    //Update numeric labels
+    func updateLabels() {
+        creditLabel.text = "$ \(currentCredit)"
+        betLabel.text = "$ \(playerBet)"
+        winLabel.text = String(currentWinnings)
+        jackPotLabel.text = "$ \(currentJackPot)"
+        
     }
 }

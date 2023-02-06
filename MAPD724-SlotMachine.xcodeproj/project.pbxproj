@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9AA5E15299053AB0026BD1E /* SpinDisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */; };
 		A9D1B916297CE45E00CC7176 /* SpinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1B915297CE45E00CC7176 /* SpinButton.swift */; };
 		A9D1B918297CE46D00CC7176 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1B917297CE46D00CC7176 /* ResetButton.swift */; };
 		A9D1B91A297CE47A00CC7176 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1B919297CE47A00CC7176 /* ExitButton.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinDisableButton.swift; sourceTree = "<group>"; };
 		A9D1B915297CE45E00CC7176 /* SpinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinButton.swift; sourceTree = "<group>"; };
 		A9D1B917297CE46D00CC7176 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		A9D1B919297CE47A00CC7176 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				A9D1B925297D24E600CC7176 /* MinusButton.swift */,
 				A9D1B927297DB58E00CC7176 /* LabelTitle.swift */,
 				A9D1B929297DFC2500CC7176 /* LabelJackPot.swift */,
+				A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9AA5E15299053AB0026BD1E /* SpinDisableButton.swift in Sources */,
 				A9D1B92A297DFC2500CC7176 /* LabelJackPot.swift in Sources */,
 				A9D1B916297CE45E00CC7176 /* SpinButton.swift in Sources */,
 				A9D1B91A297CE47A00CC7176 /* ExitButton.swift in Sources */,
