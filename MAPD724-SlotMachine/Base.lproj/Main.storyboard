@@ -1,24 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="matrix.ttf">
+            <string>matrix</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="MAPD724_SlotMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0I-QY-tjh">
+                                <rect key="frame" x="16" y="59" width="361" height="759"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puu-GP-BMM">
+                                        <rect key="frame" x="8" y="46" width="342" height="89"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="89" id="Fng-0k-ACd"/>
+                                            <constraint firstAttribute="width" constant="342" id="q9b-5G-TKg"/>
+                                        </constraints>
+                                        <string key="text">To play this slot machine you must first have some credits, check the credits gauge, but don't worry, if you're down to zero, call out of the matrix using the reset button and we'll provide you with some more credits.</string>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAT-am-B8k">
+                                        <rect key="frame" x="8" y="143" width="346" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="346" id="oSZ-pn-dSU"/>
+                                        </constraints>
+                                        <string key="text">Enter your bet using the Plus and Minus buttons, you won't be able to play without risking some money. When you have decided your bet, press the Spin button so that the Matrix decides your luck.</string>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rES-H7-ews">
+                                        <rect key="frame" x="258" y="3" width="94.666666666666686" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Y26-1Q-821"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="[X] Close"/>
+                                        <connections>
+                                            <action selector="CloseHelpButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cLY-RY-cRy"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After spinning the wheel, you will see three different images, any combination that does not have a Blank will win you" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWc-Vh-vIz">
+                                        <rect key="frame" x="8" y="211" width="346" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="346" id="D77-93-INp"/>
+                                            <constraint firstAttribute="height" constant="75" id="sDV-vv-NFu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZm-xP-OFF">
+                                        <rect key="frame" x="8" y="264" width="342" height="117"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="117" id="bBp-BM-VUf"/>
+                                            <constraint firstAttribute="width" constant="342" id="y25-E4-hlm"/>
+                                        </constraints>
+                                        <string key="text">Although losing is discouraging, there is always a new opportunity, every time you bet and do not get a prize, the Jackpot will increase, this is a special prize that accumulates until a player manages to win it</string>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN1-pe-eYh">
+                                        <rect key="frame" x="8" y="343" width="342" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="342" id="TI6-CH-R4l"/>
+                                            <constraint firstAttribute="height" constant="110" id="lFf-1x-FKe"/>
+                                        </constraints>
+                                        <string key="text">Thank you for trying our game, we try to make life in the matrix more pleasant, have fun and try to find out if you are the one to win</string>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQv-oh-Frs">
+                                        <rect key="frame" x="5" y="452" width="352.33333333333331" height="313"/>
+                                        <string key="text">Three grapes Bet x Ten
+Three bananas Bet x Twenty
+Three oranges Bet x Thirty
+Three cherries Bet x Forty
+Three bars Bet x Fifty
+Three bells Bet x Seventy five
+Three sevens Bet x One hundred
+Two grapes Bet x Two
+Two bananas Bet x Two
+Two oranges Bet x Three
+Two cherries Bet x Four
+Two bars Bet x Five
+Two bells Bet x Ten
+Two sevens Bet x Twenty
+One seven Bet x Five</string>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AWARDS LIST" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nf-Yn-Idj">
+                                        <rect key="frame" x="-3.3333333333333428" y="437" width="361" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="361" id="GMv-w9-0OL"/>
+                                            <constraint firstAttribute="height" constant="54" id="HQo-wN-SrD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="matrix" family="matrix" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstItem="DAT-am-B8k" firstAttribute="top" secondItem="puu-GP-BMM" secondAttribute="bottom" constant="8" id="17S-hr-HQE"/>
+                                    <constraint firstItem="puu-GP-BMM" firstAttribute="centerX" secondItem="h0I-QY-tjh" secondAttribute="centerX" constant="-1.5" id="3yc-NA-2Rf"/>
+                                    <constraint firstItem="ZQv-oh-Frs" firstAttribute="centerX" secondItem="3Nf-Yn-Idj" secondAttribute="centerX" constant="4" id="6cu-8g-32t"/>
+                                    <constraint firstItem="3Nf-Yn-Idj" firstAttribute="centerX" secondItem="eZm-xP-OFF" secondAttribute="centerX" constant="-1.8333333333333428" id="BxZ-F3-YCy"/>
+                                    <constraint firstItem="ZQv-oh-Frs" firstAttribute="leading" secondItem="Ypb-cY-NLZ" secondAttribute="leading" constant="5" id="GUx-3v-vu6"/>
+                                    <constraint firstItem="puu-GP-BMM" firstAttribute="top" secondItem="rES-H7-ews" secondAttribute="bottom" constant="8" id="GqT-2f-zJ2"/>
+                                    <constraint firstItem="puu-GP-BMM" firstAttribute="leading" secondItem="pWc-Vh-vIz" secondAttribute="leading" id="Lgr-Kr-Z15"/>
+                                    <constraint firstItem="ZQv-oh-Frs" firstAttribute="top" secondItem="XN1-pe-eYh" secondAttribute="bottom" constant="-1" id="Mi9-YQ-E4D"/>
+                                    <constraint firstItem="DAT-am-B8k" firstAttribute="leading" secondItem="h0I-QY-tjh" secondAttribute="leadingMargin" id="Ww7-Nc-rsf"/>
+                                    <constraint firstItem="ZQv-oh-Frs" firstAttribute="bottom" secondItem="h0I-QY-tjh" secondAttribute="bottomMargin" constant="14" id="Xpa-WQ-Hx2"/>
+                                    <constraint firstItem="eZm-xP-OFF" firstAttribute="top" secondItem="pWc-Vh-vIz" secondAttribute="bottom" constant="-22" id="b46-ma-lhQ"/>
+                                    <constraint firstItem="pWc-Vh-vIz" firstAttribute="leading" secondItem="XN1-pe-eYh" secondAttribute="leading" id="cFs-xo-s0o"/>
+                                    <constraint firstItem="DAT-am-B8k" firstAttribute="leading" secondItem="eZm-xP-OFF" secondAttribute="leading" id="hey-ix-TLf"/>
+                                    <constraint firstAttribute="bottom" secondItem="XN1-pe-eYh" secondAttribute="bottom" constant="306" id="lNJ-6F-Kso"/>
+                                    <constraint firstItem="rES-H7-ews" firstAttribute="leading" secondItem="Ypb-cY-NLZ" secondAttribute="leading" constant="258" id="m08-KT-XmQ"/>
+                                    <constraint firstItem="rES-H7-ews" firstAttribute="top" secondItem="Ypb-cY-NLZ" secondAttribute="top" constant="3" id="p9U-d0-p7z"/>
+                                    <constraint firstAttribute="trailing" secondItem="DAT-am-B8k" secondAttribute="trailing" constant="7" id="pDx-dJ-QsO"/>
+                                    <constraint firstItem="3Nf-Yn-Idj" firstAttribute="centerY" secondItem="h0I-QY-tjh" secondAttribute="centerY" constant="84.5" id="stJ-aj-rkH"/>
+                                    <constraint firstItem="pWc-Vh-vIz" firstAttribute="top" secondItem="DAT-am-B8k" secondAttribute="bottom" constant="-6" id="tug-p0-i4h"/>
+                                    <constraint firstItem="XN1-pe-eYh" firstAttribute="top" secondItem="eZm-xP-OFF" secondAttribute="bottom" constant="-38" id="y4S-KC-WqC"/>
+                                    <constraint firstItem="Ypb-cY-NLZ" firstAttribute="bottom" secondItem="XN1-pe-eYh" secondAttribute="bottom" constant="306" id="yur-B4-5fD"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="f7l-ct-Kad"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Ypb-cY-NLZ"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wz-yy-k1a" userLabel="Awards Scroll View">
+                                <rect key="frame" x="16" y="59" width="361" height="759"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceb-Y2-ZJW">
+                                        <rect key="frame" x="258" y="3" width="94.666666666666686" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="AM7-hd-34a"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="[X] Close"/>
+                                        <connections>
+                                            <action selector="CloseAwardButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="tVJ-06-u5a"/>
+                                            <action selector="CloseHelpButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rGb-de-KXd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-Ld-Eig">
+                                        <rect key="frame" x="0.0" y="146" width="361" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="361" id="Ewv-ca-38a"/>
+                                            <constraint firstAttribute="height" constant="54" id="Ipb-t5-Llz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ceb-Y2-ZJW" secondAttribute="bottom" constant="721" id="9oS-NB-mSN"/>
+                                    <constraint firstItem="AD8-Ld-Eig" firstAttribute="centerY" secondItem="5wz-yy-k1a" secondAttribute="centerY" constant="-206.5" id="OJd-vy-pIo"/>
+                                    <constraint firstAttribute="trailing" secondItem="ceb-Y2-ZJW" secondAttribute="trailing" constant="8.3333333333333144" id="TzL-wX-SMO"/>
+                                    <constraint firstItem="ceb-Y2-ZJW" firstAttribute="top" secondItem="5wz-yy-k1a" secondAttribute="top" constant="3" id="bJ3-qp-doE"/>
+                                    <constraint firstItem="AD8-Ld-Eig" firstAttribute="centerX" secondItem="5wz-yy-k1a" secondAttribute="centerX" id="eex-Hf-Apf"/>
+                                    <constraint firstItem="ceb-Y2-ZJW" firstAttribute="leading" secondItem="q2E-bs-KYQ" secondAttribute="leading" constant="258" id="r0a-fr-a7y"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="VMN-xG-OpK"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="q2E-bs-KYQ"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5wz-yy-k1a" firstAttribute="leading" secondItem="h0I-QY-tjh" secondAttribute="leading" id="2Qk-sc-9UG"/>
+                            <constraint firstItem="h0I-QY-tjh" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="3Pi-UJ-o5U"/>
+                            <constraint firstItem="5wz-yy-k1a" firstAttribute="trailing" secondItem="h0I-QY-tjh" secondAttribute="trailing" id="3Wc-Hs-woU"/>
+                            <constraint firstItem="h0I-QY-tjh" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="Orz-Ik-kfX"/>
+                            <constraint firstItem="5wz-yy-k1a" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="XLz-en-ZI5"/>
+                            <constraint firstItem="5wz-yy-k1a" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="12.5" id="bBv-Gp-bDD"/>
+                            <constraint firstItem="h0I-QY-tjh" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="c8G-fA-1UQ"/>
+                            <constraint firstItem="5wz-yy-k1a" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="qnx-HG-tJe"/>
+                            <constraint firstItem="h0I-QY-tjh" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" constant="12.5" id="sU8-iX-MXz"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="5wz-yy-k1a" secondAttribute="bottom" id="yjs-yj-0xs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="AwardsScrollView" destination="5wz-yy-k1a" id="5kW-hk-WQB"/>
+                        <outlet property="HelpScrollView" destination="h0I-QY-tjh" id="YaX-Ve-Pg0"/>
+                        <outlet property="TopWinLabel" destination="AD8-Ld-Eig" id="bGp-K5-sSG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-34.507042253521128"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
