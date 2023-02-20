@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9367FDF29A1BF88003899B9 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9367FDE29A1BF88003899B9 /* Layer.swift */; };
+		A9367FF529A1DAC5003899B9 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9367FF429A1DAC5003899B9 /* Scores.swift */; };
+		A9367FF729A1DB10003899B9 /* ScoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9367FF629A1DB10003899B9 /* ScoresManager.swift */; };
+		A9367FF929A27E95003899B9 /* SlotMachineUI.png in Resources */ = {isa = PBXBuildFile; fileRef = A9367FF829A27E95003899B9 /* SlotMachineUI.png */; };
+		A9367FFC29A27E9D003899B9 /* matrix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9367FFB29A27E9D003899B9 /* matrix.ttf */; };
+		A936800129A28BC4003899B9 /* AwardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936800029A28BC4003899B9 /* AwardButton.swift */; };
+		A936800329A28BF3003899B9 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A936800229A28BF3003899B9 /* HelpButton.swift */; };
 		A9AA5E15299053AB0026BD1E /* SpinDisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */; };
 		A9D1B916297CE45E00CC7176 /* SpinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1B915297CE45E00CC7176 /* SpinButton.swift */; };
 		A9D1B918297CE46D00CC7176 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1B917297CE46D00CC7176 /* ResetButton.swift */; };
@@ -34,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9367FDE29A1BF88003899B9 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		A9367FF429A1DAC5003899B9 /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
+		A9367FF629A1DB10003899B9 /* ScoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresManager.swift; sourceTree = "<group>"; };
+		A9367FF829A27E95003899B9 /* SlotMachineUI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SlotMachineUI.png; sourceTree = "<group>"; };
+		A9367FFB29A27E9D003899B9 /* matrix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = matrix.ttf; sourceTree = "<group>"; };
+		A9367FFF29A282D3003899B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A936800029A28BC4003899B9 /* AwardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardButton.swift; sourceTree = "<group>"; };
+		A936800229A28BF3003899B9 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinDisableButton.swift; sourceTree = "<group>"; };
 		A9D1B915297CE45E00CC7176 /* SpinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinButton.swift; sourceTree = "<group>"; };
 		A9D1B917297CE46D00CC7176 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
@@ -72,6 +87,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9367FDC29A1BE83003899B9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A9E66538297A3B4000EC7185 /* GameScene.swift */,
+				A9E66534297A3B4000EC7185 /* GameScene.sks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A9367FEF29A1D873003899B9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A9367FF429A1DAC5003899B9 /* Scores.swift */,
+				A9367FF629A1DB10003899B9 /* ScoresManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		A9367FFA29A27E9D003899B9 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A9367FFB29A27E9D003899B9 /* matrix.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		A9E66526297A3B4000EC7185 = {
 			isa = PBXGroup;
 			children = (
@@ -91,13 +132,14 @@
 		A9E66531297A3B4000EC7185 /* MAPD724-SlotMachine */ = {
 			isa = PBXGroup;
 			children = (
+				A9367FFF29A282D3003899B9 /* Info.plist */,
+				A9367FEF29A1D873003899B9 /* Managers */,
+				A9367FDC29A1BE83003899B9 /* Scenes */,
 				A9E66551297A426C00EC7185 /* Assets */,
 				A9E6654C297A3BDA00EC7185 /* Core */,
 				A9E66549297A3B4C00EC7185 /* GameObjects */,
 				A9E66532297A3B4000EC7185 /* AppDelegate.swift */,
-				A9E66534297A3B4000EC7185 /* GameScene.sks */,
 				A9E66536297A3B4000EC7185 /* Actions.sks */,
-				A9E66538297A3B4000EC7185 /* GameScene.swift */,
 				A9E6653A297A3B4000EC7185 /* GameViewController.swift */,
 				A9E6653C297A3B4000EC7185 /* Main.storyboard */,
 				A9E6653F297A3B4100EC7185 /* Assets.xcassets */,
@@ -122,6 +164,8 @@
 				A9D1B927297DB58E00CC7176 /* LabelTitle.swift */,
 				A9D1B929297DFC2500CC7176 /* LabelJackPot.swift */,
 				A9AA5E14299053AB0026BD1E /* SpinDisableButton.swift */,
+				A936800029A28BC4003899B9 /* AwardButton.swift */,
+				A936800229A28BF3003899B9 /* HelpButton.swift */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -131,6 +175,7 @@
 			children = (
 				A9E6654D297A3BE800EC7185 /* GameObject.swift */,
 				A9E6654F297A3C1500EC7185 /* GameProtocol.swift */,
+				A9367FDE29A1BF88003899B9 /* Layer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -138,6 +183,8 @@
 		A9E66551297A426C00EC7185 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A9367FFA29A27E9D003899B9 /* fonts */,
+				A9367FF829A27E95003899B9 /* SlotMachineUI.png */,
 				A9F38448297AF935009D9E9F /* MatrixSlotMachine.png */,
 			);
 			path = Assets;
@@ -203,6 +250,8 @@
 			files = (
 				A9E6653E297A3B4000EC7185 /* Main.storyboard in Resources */,
 				A9E66535297A3B4000EC7185 /* GameScene.sks in Resources */,
+				A9367FF929A27E95003899B9 /* SlotMachineUI.png in Resources */,
+				A9367FFC29A27E9D003899B9 /* matrix.ttf in Resources */,
 				A9E66540297A3B4100EC7185 /* Assets.xcassets in Resources */,
 				A9E66543297A3B4100EC7185 /* LaunchScreen.storyboard in Resources */,
 				A9E66537297A3B4000EC7185 /* Actions.sks in Resources */,
@@ -220,19 +269,24 @@
 				A9AA5E15299053AB0026BD1E /* SpinDisableButton.swift in Sources */,
 				A9D1B92A297DFC2500CC7176 /* LabelJackPot.swift in Sources */,
 				A9D1B916297CE45E00CC7176 /* SpinButton.swift in Sources */,
+				A9367FF729A1DB10003899B9 /* ScoresManager.swift in Sources */,
 				A9D1B91A297CE47A00CC7176 /* ExitButton.swift in Sources */,
+				A9367FDF29A1BF88003899B9 /* Layer.swift in Sources */,
 				A9D1B922297D205100CC7176 /* LabelBet.swift in Sources */,
 				A9D1B926297D24E600CC7176 /* MinusButton.swift in Sources */,
 				A9E66539297A3B4000EC7185 /* GameScene.swift in Sources */,
 				A9D1B91E297D1D3A00CC7176 /* LabelWinnigns.swift in Sources */,
 				A9E6653B297A3B4000EC7185 /* GameViewController.swift in Sources */,
+				A9367FF529A1DAC5003899B9 /* Scores.swift in Sources */,
 				A9D1B924297D232300CC7176 /* PlusButton.swift in Sources */,
 				A9D1B918297CE46D00CC7176 /* ResetButton.swift in Sources */,
 				A9E66533297A3B4000EC7185 /* AppDelegate.swift in Sources */,
+				A936800129A28BC4003899B9 /* AwardButton.swift in Sources */,
 				A9D1B920297D1ED500CC7176 /* LabelCredit.swift in Sources */,
 				A9E6654B297A3B6B00EC7185 /* BackGround.swift in Sources */,
 				A9E6654E297A3BE800EC7185 /* GameObject.swift in Sources */,
 				A9D1B928297DB58E00CC7176 /* LabelTitle.swift in Sources */,
+				A936800329A28BF3003899B9 /* HelpButton.swift in Sources */,
 				A9D1B91C297D15BF00CC7176 /* LabelBackGround.swift in Sources */,
 				A9E66550297A3C1500EC7185 /* GameProtocol.swift in Sources */,
 			);
@@ -382,6 +436,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MAPD724-SlotMachine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -409,6 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MAPD724-SlotMachine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
