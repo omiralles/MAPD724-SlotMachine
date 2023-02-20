@@ -23,7 +23,7 @@ class LabelWinnings : GameObject {
     }
     
     override func Start() {
-        zPosition = 3
+        zPosition = Layer.buttonsLabels.rawValue
     }
     
     override func Update() {

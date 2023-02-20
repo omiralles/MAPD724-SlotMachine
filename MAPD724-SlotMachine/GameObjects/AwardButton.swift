@@ -11,10 +11,10 @@
 import SpriteKit
 import GameplayKit
 
-class LabelBet : GameObject {
+class AwardButton : GameObject {
     // constructor or initializer
     init () {
-        super.init(imageString: "bet", initialScale: 1.0)
+        super.init(imageString: "awards", initialScale: 1.0)
         Start()
     }
     
@@ -23,6 +23,7 @@ class LabelBet : GameObject {
     }
     
     override func Start() {
+        position = CGPoint(x: 0, y: -250)
         zPosition = Layer.buttonsLabels.rawValue
     }
     

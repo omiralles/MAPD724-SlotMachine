@@ -24,7 +24,7 @@ class ExitButton : GameObject {
     
     override func Start() {
         position = CGPoint(x: -110, y: -250)
-        zPosition = 3
+        zPosition = Layer.buttonsLabels.rawValue
     }
     
     override func Update() {

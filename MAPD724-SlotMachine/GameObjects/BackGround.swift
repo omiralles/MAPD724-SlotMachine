@@ -23,7 +23,7 @@ class BackGround : GameObject {
     }
     
     override func Start() {
-        zPosition = 2
+        zPosition = Layer.background.rawValue
     }
     
     override func Update() {

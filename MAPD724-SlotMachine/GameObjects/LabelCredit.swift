@@ -23,7 +23,7 @@ class LabelCredit : GameObject {
     }
     
     override func Start() {
-        zPosition = 3
+        zPosition = Layer.buttonsLabels.rawValue
     }
     
     override func Update() {

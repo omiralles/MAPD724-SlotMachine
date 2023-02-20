@@ -24,7 +24,7 @@ class SpinDisableButton : GameObject {
     
     override func Start() {
         position = CGPoint(x: 90, y: -150)
-        zPosition = 0
+        zPosition = Layer.matrix.rawValue
     }
     
     override func Update() {

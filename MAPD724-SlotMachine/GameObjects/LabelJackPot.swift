@@ -23,7 +23,7 @@ class LabelJackPot : GameObject {
     }
     
     override func Start() {
-        zPosition = 1
+        zPosition = Layer.symbol.rawValue
     }
     
     override func Update() {

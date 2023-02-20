@@ -14,8 +14,17 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    //View elements added
+    @IBOutlet weak var HelpScrollView: UIScrollView!
+    @IBOutlet weak var TopWinLabel: UILabel!
+    @IBOutlet weak var AwardsScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HelpScrollView.isHidden = true
+        AwardsScrollView.isHidden = true
+        GameScene.gameViewController = self
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -40,5 +49,30 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    //Show help ScrollView
+    func showHelp() {
+        HelpScrollView.isHidden = false
+    }
+    
+    //Show top socre ScrollView
+    func showAwards() {
+        let loadData = UserDefaults.standard
+        let topWin = loadData.integer(forKey: "topwin")
+        //Wite the top score in the label
+        TopWinLabel.text = "TOP USER WINNIGS: $ \(topWin)"
+        
+        AwardsScrollView.isHidden = false
+    }
+    
+    //Hide Help ScrollView
+    @IBAction func CloseHelpButton(_ sender: Any) {
+        HelpScrollView.isHidden = true
+    }
+    
+    //Hide Top Score ScrollView
+    @IBAction func CloseAwardButton(_ sender: Any) {
+        AwardsScrollView.isHidden = true
     }
 }
